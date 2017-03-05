@@ -30,7 +30,8 @@ public class SettingsActivity extends PreferenceActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setInputMethodSettingsCategoryTitle(R.string.st_dotlength);
+            setInputMethodSettingsCategoryTitle(R.string.st_timing);
+            setSubtypeEnablerTitle(R.string.st_dotlength);
 
             // Load the preferences from an XML resource
             addPreferencesFromResource(R.xml.settings_preference_screen);

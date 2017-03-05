@@ -3,6 +3,9 @@
     <string name="mk_settings">Morse Keyboard Settings</string>
     <string name="mk_label">Morse Keyboard</string>
 
+    <string name="label">English (US)</string>
+
+    <string name="st_timing">Timing Settings</string>
     <string name="st_dotlength">Dot Length (ms)</string>
     <string name="st_dashmult">Dash Length (dots)</string>
     <string name="st_elementpause">Pause between Elements (ms)</string>

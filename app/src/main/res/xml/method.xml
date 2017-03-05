@@ -4,6 +4,10 @@
     android:supportsSwitchingToNextInputMethod="true"
     >
 
-    <SeekBar />
+    <subtype
+        android:label="@string/label"
+        android:icon="@drawable/icon_en_us"
+        android:imeSubtypeLocale="en_US"
+        android:imeSubtypeMode="keyboard" />
 
 </input-method>
