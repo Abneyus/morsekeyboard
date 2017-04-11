@@ -15,12 +15,12 @@
             <meta-data android:name="android.view.im" android:resource="@xml/method" />
         </service>
 
-        <!--<activity android:name=".ImePreferences"-->
-            <!--android:label="@string/mk_settings">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
-            <!--</intent-filter>-->
-        <!--</activity>-->
+        <activity android:name=".SettingsActivity"
+            android:label="@string/mk_settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
 
     </application>
 
