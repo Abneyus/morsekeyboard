@@ -4,9 +4,13 @@ import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.text.InputType;
+import android.util.Log;
 import android.view.*;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MorseKeyboard extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
 
@@ -14,6 +18,8 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
     private MKKeyboardView mInputView;
 
     private StringBuilder mComposing = new StringBuilder();
+
+    private String mInput = "";
 
     @Override
     public void onCreate() {
@@ -30,6 +36,7 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
         mInputView =
                 (MKKeyboardView) getLayoutInflater().inflate(R.layout.input, null);
 
+        mInputView.setPreviewEnabled(false);
         mInputView.setOnKeyboardActionListener(this);
         mInputView.setKeyboard(mStraightKey);
 
@@ -126,16 +133,16 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
         // Pause between elements: 125 ms
         // Pause between characters: 375 ms
         // Pause between words: 875 ms
-
-        long deltaTime = event.getEventTime() - event.getDownTime();
-
-        if(deltaTime < 300) {
-            // Dot
-        } else if(deltaTime > 500) {
-            // Dash
-        } else {
-            // New Word
-        }
+//
+//        long deltaTime = event.getEventTime() - event.getDownTime();
+//
+//        if(deltaTime < 300) {
+//            // Dot
+//        } else if(deltaTime > 500) {
+//            // Dash
+//        } else {
+//            // New Word
+//        }
 
         return super.onKeyUp(keyCode, event);
     }
@@ -162,26 +169,106 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
     }
 
     public void onKey(int primaryCode, int[] keyCodes) {
-        // Do shit.
+        // This is the dot key.
+        if(primaryCode == 0)
+        {
+            Log.d("mk", "dot pressed");
+            mInput += "0";
+        }
+        // This is the dash key.
+        else if (primaryCode == 1)
+        {
+            Log.d("mk", "dash pressed");
+            mInput += "1";
+        }
+        // This is the space key.
+        // Want to translate inputted morse to text.
+        else if (primaryCode == 2)
+        {
+            Log.d("mk", "space pressed");
+            mComposing.append(translate(mInput));
+            mInput = "";
+            commitTyped(this.getCurrentInputConnection());
+        }
+        else if (primaryCode == -1)
+        {
+
+        }
+        else {
+            Log.d("mk", "something unexpected pressed");
+        }
+
+        List<Keyboard.Key> temp = mStraightKey.getKeys();
+        for (Keyboard.Key a : temp) {
+            if (a.codes[0] == -1) {
+                Log.d("mk", "SPICY MEATBALL!");
+                a.text = mInput;
+                a.label = mInput;
+
+                mInputView.invalidateAllKeys();
+            }
+        }
     }
 
     public void onText(CharSequence text) {
-        // Do shit.
+
     }
 
     public void swipeRight() {
+        Log.d("mk", "swipe right");
     }
 
     public void swipeLeft() {
+        Log.d("mk", "swipe left");
     }
 
     public void swipeDown() {
+        Log.d("mk", "swipe down");
     }
 
     public void swipeUp() {
+        Log.d("mk", "swipe up");
+    }
+
+
+
+    private String translate(String mInput)
+    {
+        switch (mInput)
+        {
+            case "0": return "E";
+            case "1": return "T";
+            case "00": return "I";
+            case "01": return "A";
+            case "10": return "N";
+            case "11": return "M";
+            case "000": return "S";
+            case "001": return "U";
+            case "010": return "R";
+            case "011": return "W";
+            case "100": return "D";
+            case "101": return "K";
+            case "110": return "G";
+            case "111": return "O";
+            case "0000": return "H";
+            case "0001": return "V";
+            case "0010": return "F";
+            case "0100": return "L";
+            case "0110": return "P";
+            case "0111": return "J";
+            case "1000": return "B";
+            case "1001": return "X";
+            case "1011": return "Y";
+            case "1010": return "C";
+            case "1100": return "Z";
+            case "1101": return "Q";
+            case "1111": this.getCurrentInputConnection().deleteSurroundingText(1,0); return "";
+        }
+        return "";
     }
 
     public void onPress(int primaryCode) {
+
     }
 
     public void onRelease(int primaryCode) {

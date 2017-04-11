@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-    android:keyWidth="100%p"
+    android:keyWidth="50%p"
     android:horizontalGap="0px"
     android:verticalGap="0px"
-    android:keyHeight="200dip"
+    android:keyHeight="75dip"
     >
 
     <Row>
-        <Key android:keyEdgeFlags="left" />
+        <Key android:keyWidth="100%p" android:codes="-1" android:keyLabel="" android:keyEdgeFlags="left" />
+    </Row>
+
+    <Row>
+        <Key android:codes="0" android:keyLabel="." android:keyEdgeFlags="left" />
+        <Key android:codes="1" android:keyLabel="-" android:keyEdgeFlags="right" />
+    </Row>
+
+    <Row>
+        <Key android:keyWidth="100%p" android:codes="2" android:keyLabel="_" android:keyEdgeFlags="left" />
+        <!--<Key android:codes="3" android:keyLabel="*" android:keyEdgeFlags="right" />-->
     </Row>
 
 </Keyboard>
