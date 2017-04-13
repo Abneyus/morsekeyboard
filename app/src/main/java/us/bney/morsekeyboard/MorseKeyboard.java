@@ -263,6 +263,16 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
             case "1100": return "Z";
             case "1101": return "Q";
             case "1111": this.getCurrentInputConnection().deleteSurroundingText(1,0); return "";
+            case "00000': return "5";
+		case "00001": return "4";
+		case "00011": return "3";
+		case "00111": return "2";
+		case "01111": return "1";
+		case "10000": return "6";
+		case "11000": return "7";
+		case "11100": return "8";
+		case "11110": return "9";
+		case "11111": return "0";
         }
         return "";
     }
