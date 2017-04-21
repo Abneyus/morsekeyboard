@@ -156,35 +156,25 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
         }
     }
 
-    /**
-     * Helper to determine if a given character code is alphabetic.
-     */
-    private boolean isAlphabet(int code) {
-        if (Character.isLetter(code)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public void onKey(int primaryCode, int[] keyCodes) {
         // This is the dot key.
         if(primaryCode == 0)
         {
-            Log.d("mk", "dot pressed");
+//            Log.d("mk", "dot pressed");
             mInput += "0";
         }
         // This is the dash key.
         else if (primaryCode == 1)
         {
-            Log.d("mk", "dash pressed");
+//            Log.d("mk", "dash pressed");
             mInput += "1";
         }
         // This is the space key.
         // Want to translate inputted morse to text.
         else if (primaryCode == 2)
         {
-            Log.d("mk", "space pressed");
+//            Log.d("mk", "space pressed");
             mComposing.append(translate(mInput));
             mInput = "";
             commitTyped(this.getCurrentInputConnection());
@@ -200,7 +190,7 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
         List<Keyboard.Key> temp = mStraightKey.getKeys();
         for (Keyboard.Key a : temp) {
             if (a.codes[0] == -1) {
-                Log.d("mk", "SPICY MEATBALL!");
+//                Log.d("mk", "SPICY MEATBALL!");
                 a.text = mInput;
                 a.label = mInput;
 
@@ -261,7 +251,12 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
             case "1010": return "C";
             case "1100": return "Z";
             case "1101": return "Q";
-            case "1111": this.getCurrentInputConnection().deleteSurroundingText(1,0); return "";
+            case "1110":
+                this.getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, 62));
+                return "";
+            case "1111":
+                this.getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, 67));
+                return "";
             case "00000": return "5";
 			case "00001": return "4";
 			case "00011": return "3";
