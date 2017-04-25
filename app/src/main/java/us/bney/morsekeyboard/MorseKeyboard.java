@@ -274,8 +274,48 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
             case "11100": return "8";
             case "11110": return "9";
             case "11111": return "0";
+            case "10010": return "/";
+            case "10001": return "=";
+            case "01010": return "+";
+            case "001101": return "_";
+            case "010010": return "\"";
+            case "011010": return "@";
+            case "100001": return "-";
+            case "101010": return ";";
+            case "111000": return ":";
+            case "010101": return ".";
+            case "110011": return ",";
+            case "001100": return "?";
+            case "011110": return "'";
+            case "101011": return "!";
+            //FACE WITH TEARS OF JOY
             case "001110": return new String(Character.toChars(128514));
+            //HEAVY HEART
             case "001111": return new String(Character.toChars(10084));
+            //SMILING FACE WITH HEART-SHAPED EYES
+            case "0011100": return new String(Character.toChars(128525));
+            //HEART SUIT
+            case "0011101": return new String(Character.toChars(9829));
+            //LOUDLY CRYING FACE
+            case "0011110": return new String(Character.toChars(128557));
+            //SMILING FACE WITH SMILING EYES
+            case "0011111": return new String(Character.toChars(128522));
+            //UNAMUSED FACE
+            case "00111000": return new String(Character.toChars(128530));
+            //TWO HEARTS
+            case "00111001": return new String(Character.toChars(128149));
+            //FACE THROWING A KISS
+            case "00111010": return new String(Character.toChars(128536));
+            //WEARY FACE
+            case "00111011": return new String(Character.toChars(128553));
+            //SMILING FACE
+            case "00111100": return new String(Character.toChars(9786));
+            //OK HAND SIGN
+            case "00111101": return new String(Character.toChars(128076));
+            //UNIVERSAL RECYCLING SYMBOL
+            case "00111110": return new String(Character.toChars(9851));
+            //PENSIVE FACE
+            case "00111111": return new String(Character.toChars(128532));
         }
         return "";
     }
