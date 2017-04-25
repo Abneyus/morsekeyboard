@@ -13,11 +13,12 @@ import java.util.List;
 
 public class MorseKeyboard extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
 
+    // Extends the keyboard class, constructed with an xml layout for the keyboard.
     private MKKeyboard mStraightKey;
+    // The view of the keyboard, what's drawn over the screen.
     private MKKeyboardView mInputView;
 
     private StringBuilder mComposing = new StringBuilder();
-
     private String mInput = "";
 
     @Override
@@ -35,8 +36,11 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
         mInputView =
                 (MKKeyboardView) getLayoutInflater().inflate(R.layout.input, null);
 
+        // Disables long press and hold on keyboard keys.
         mInputView.setPreviewEnabled(false);
+        // Sets the keyboard's action listener to an instance of this class, which implements KeyboardActionListener
         mInputView.setOnKeyboardActionListener(this);
+        // Sets the layout of the keyboard.
         mInputView.setKeyboard(mStraightKey);
 
         return mInputView;
@@ -156,7 +160,9 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
         }
     }
 
-
+    // If the dot or dash keys are pressed, adds a 0 or 1 to the mInput string
+    // as appropriate. If the send input key is pressed it will translate the
+    // inputted 0s and 1s to the appropriate ASCII character.
     public void onKey(int primaryCode, int[] keyCodes) {
         // This is the dot key.
         if(primaryCode == 0)
@@ -220,7 +226,8 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
     }
 
 
-
+    // Translates a string of 0s and 1s to an appropriate UTF8 character based off of the
+    // morse code standard.
     private String translate(String mInput)
     {
         switch (mInput)
@@ -258,17 +265,17 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
                 this.getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, 67));
                 return "";
             case "00000": return "5";
-			case "00001": return "4";
-			case "00011": return "3";
-			case "00111": return "2";
-			case "01111": return "1";
-			case "10000": return "6";
-			case "11000": return "7";
-			case "11100": return "8";
-			case "11110": return "9";
-			case "11111": return "0";
-			case "001110": return new String(Character.toChars(128514));
-			case "001111": return new String(Character.toChars(10084));
+            case "00001": return "4";
+            case "00011": return "3";
+            case "00111": return "2";
+            case "01111": return "1";
+            case "10000": return "6";
+            case "11000": return "7";
+            case "11100": return "8";
+            case "11110": return "9";
+            case "11111": return "0";
+            case "001110": return new String(Character.toChars(128514));
+            case "001111": return new String(Character.toChars(10084));
         }
         return "";
     }
