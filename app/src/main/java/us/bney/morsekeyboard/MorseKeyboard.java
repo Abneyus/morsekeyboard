@@ -316,6 +316,13 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
             case "00111110": return new String(Character.toChars(9851));
             //PENSIVE FACE
             case "00111111": return new String(Character.toChars(128532));
+            //MORSE DELETE WORD
+            //ONLY DELETES ONE CHARACTER.
+            case "11111111":
+//                this.getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, 113));
+                this.getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, 67));
+//                this.getCurrentInputConnection().sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, 113));
+                return "";
         }
         return "";
     }

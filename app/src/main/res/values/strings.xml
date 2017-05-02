@@ -6,9 +6,9 @@
     <string name="label">English (US)</string>
 
     <string name="st_timing">Timing Settings</string>
-    <string name="st_dotlength">Dot Length (ms)</string>
-    <string name="st_dashmult">Dash Length (dots)</string>
-    <string name="st_elementpause">Pause between Elements (ms)</string>
-    <string name="st_characterpause">Pause between Characters (dots)</string>
-    <string name="st_wordpause">Pause between Words (dots)</string>
+    <string name="st_dotlength">Dot Length</string>
+    <string name="st_dashmult">Dash Length</string>
+    <string name="st_elementpause">Pause between Elements</string>
+    <string name="st_characterpause">Pause between Characters</string>
+    <string name="st_wordpause">Pause between Words</string>
 </resources>

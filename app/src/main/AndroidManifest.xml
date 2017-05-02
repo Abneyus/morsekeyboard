@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="us.bney.morsekeyboard" >
+    package="us.bney.morsekeyboard">
 
-    <application
-        android:label="@string/mk_label">
+    <application android:label="@string/mk_label">
 
         <!-- Declares the input method service -->
-        <service android:name="MorseKeyboard"
+        <service
+            android:name=".MorseKeyboard"
             android:label="@string/mk_label"
             android:permission="android.permission.BIND_INPUT_METHOD">
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
             </intent-filter>
-            <meta-data android:name="android.view.im" android:resource="@xml/method" />
+
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/method" />
         </service>
 
-        <activity android:name=".SettingsActivity"
-            android:label="@string/mk_settings">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/mk_settings"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
